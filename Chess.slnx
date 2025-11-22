@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="chess.client/chess.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="Chess.Server/Chess.Server.csproj" />
+</Solution>
