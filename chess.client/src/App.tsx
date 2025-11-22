@@ -11,27 +11,11 @@ import whiteKnight from "../src/assets/white-knight.png";
 import whiteBishop from "../src/assets/white-bishop.png";
 import whiteKing from "../src/assets/white-king.png";
 import whiteQueen from "../src/assets/white-queen.png";
-
-type Color = "Black" | "White";
-type PieceType = 'Pawn' | 'Knight' | 'Bishop' | 'Rook' | 'King' | 'Queen';
-
-interface Piece {
-    color: Color;
-    type: PieceType;
-}
-
-interface Square {
-    x: number;
-    y: number;
-    color: Color;
-    piece: Piece | null;
-}
-
-interface Board {
-    rows: number;
-    cols: number;
-    squares: Square[];
-}
+import type { Color } from '../src/Color';
+import type { PieceType } from '../src/PieceType';
+import type { Board } from '../src/Board';
+import type { Square } from '../src/Square';
+import StartGameButton  from '../src/StartGameButton';
 
 const piecesMap: Record<Color, Record<PieceType, string>> = {
     Black: {
@@ -60,6 +44,7 @@ const getColorClass = (color: Color): string =>
 const App: React.FC = () => {
     const [board, setBoard] = useState<Board | undefined>(undefined);
     const [error, setError] = useState<string | null>(null);
+    const [isGameOn, setIsGameOn] = useState<boolean>(false);
 
     useEffect(() => {
         fetchBoard();
@@ -102,6 +87,7 @@ const App: React.FC = () => {
     grid.forEach(row => row.sort((a, b) => a.x - b.x));
 
     return (
+        <>
         <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
             <div
                 className="shadow-xl rounded-xl overflow-hidden border-8 border-gray-900"
@@ -129,6 +115,8 @@ const App: React.FC = () => {
                 ))}
             </div>
         </div>
+            {!isGameOn && <StartGameButton setIsGameOn={setIsGameOn} />}
+        </>
     );
 };
 

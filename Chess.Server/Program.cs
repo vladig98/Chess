@@ -1,3 +1,5 @@
+using Chess.Server.Hubs;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddJsonOptions(options =>
@@ -6,7 +8,9 @@ builder.Services.AddControllers().AddJsonOptions(options =>
         new JsonStringEnumConverter()
     );
 });
+
 builder.Services.AddOpenApi();
+builder.Services.AddSignalR();
 
 builder.Services.AddScoped<IGameEngine, GameEngine>();
 
@@ -24,6 +28,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<GameHub>("/playGame");
 app.MapFallbackToFile("/index.html");
 
 app.Run();
