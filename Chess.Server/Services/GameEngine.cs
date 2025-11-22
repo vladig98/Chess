@@ -12,7 +12,7 @@ public class GameEngine : IGameEngine
         { 0UL << 32 | 5UL, new Piece() { Color = Color.Black, Type = PieceType.Bishop } },
         { 0UL << 32 | 6UL, new Piece() { Color = Color.Black, Type = PieceType.Knight } },
         { 0UL << 32 | 7UL, new Piece() { Color = Color.Black, Type = PieceType.Rook } },
-            
+
         { 1UL << 32 | 0UL, new Piece() { Color = Color.Black, Type = PieceType.Pawn } },
         { 1UL << 32 | 1UL, new Piece() { Color = Color.Black, Type = PieceType.Pawn } },
         { 1UL << 32 | 2UL, new Piece() { Color = Color.Black, Type = PieceType.Pawn } },
@@ -21,7 +21,7 @@ public class GameEngine : IGameEngine
         { 1UL << 32 | 5UL, new Piece() { Color = Color.Black, Type = PieceType.Pawn } },
         { 1UL << 32 | 6UL, new Piece() { Color = Color.Black, Type = PieceType.Pawn } },
         { 1UL << 32 | 7UL, new Piece() { Color = Color.Black, Type = PieceType.Pawn } },
-            
+
         { 6UL << 32 | 0UL, new Piece() { Color = Color.White, Type = PieceType.Pawn } },
         { 6UL << 32 | 1UL, new Piece() { Color = Color.White, Type = PieceType.Pawn } },
         { 6UL << 32 | 2UL, new Piece() { Color = Color.White, Type = PieceType.Pawn } },
@@ -30,7 +30,7 @@ public class GameEngine : IGameEngine
         { 6UL << 32 | 5UL, new Piece() { Color = Color.White, Type = PieceType.Pawn } },
         { 6UL << 32 | 6UL, new Piece() { Color = Color.White, Type = PieceType.Pawn } },
         { 6UL << 32 | 7UL, new Piece() { Color = Color.White, Type = PieceType.Pawn } },
-            
+
         { 7UL << 32 | 0UL, new Piece() { Color = Color.White, Type = PieceType.Rook } },
         { 7UL << 32 | 1UL, new Piece() { Color = Color.White, Type = PieceType.Knight } },
         { 7UL << 32 | 2UL, new Piece() { Color = Color.White, Type = PieceType.Bishop } },
