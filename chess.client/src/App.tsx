@@ -1,11 +1,30 @@
 ﻿import React, { useEffect, useState } from "react";
+import blackPawn from "../src/assets/black-pawn.png";
+import blackRook from "../src/assets/black-rook.png";
+import blackKnight from "../src/assets/black-knight.png";
+import blackBishop from "../src/assets/black-bishop.png";
+import blackKing from "../src/assets/black-king.png";
+import blackQueen from "../src/assets/black-queen.png";
+import whitePawn from "../src/assets/white-pawn.png";
+import whiteRook from "../src/assets/white-rook.png";
+import whiteKnight from "../src/assets/white-knight.png";
+import whiteBishop from "../src/assets/white-bishop.png";
+import whiteKing from "../src/assets/white-king.png";
+import whiteQueen from "../src/assets/white-queen.png";
 
 type Color = "Black" | "White";
+type PieceType = 'Pawn' | 'Knight' | 'Bishop' | 'Rook' | 'King' | 'Queen';
+
+interface Piece {
+    color: Color;
+    type: PieceType;
+}
 
 interface Square {
     x: number;
     y: number;
     color: Color;
+    piece: Piece | null;
 }
 
 interface Board {
@@ -13,6 +32,25 @@ interface Board {
     cols: number;
     squares: Square[];
 }
+
+const piecesMap: Record<Color, Record<PieceType, string>> = {
+    Black: {
+        Pawn: blackPawn,
+        Knight: blackKnight,
+        Bishop: blackBishop,
+        Rook: blackRook,
+        King: blackKing,
+        Queen: blackQueen,
+    },
+    White: {
+        Pawn: whitePawn,
+        Knight: whiteKnight,
+        Bishop: whiteBishop,
+        Rook: whiteRook,
+        King: whiteKing,
+        Queen: whiteQueen,
+    },
+};
 
 const getColorClass = (color: Color): string =>
     color === "White"
@@ -79,7 +117,15 @@ const App: React.FC = () => {
                     <div
                         key={`${square.x}-${square.y}`}
                         className={`transition-colors duration-200 ${getColorClass(square.color)}`}
-                    />
+                    >
+                        {square.piece && (
+                            <img
+                                src={piecesMap[square.piece.color][square.piece.type]}
+                                alt={`${square.piece.color} ${square.piece.type}`}
+                                className="w-full h-full object-contain"
+                            />
+                        )}
+                    </div>
                 ))}
             </div>
         </div>
